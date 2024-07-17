@@ -2,15 +2,120 @@ from flask import Flask
 
 app = Flask(__name__)
 
+@app.route("/")
+def main():
+    return """
+        <html>
+        <body>
+            <a href='/home'>Go to home page</a>
+        </body>
+        </html>
+    """
+
 @app.route('/home')
 def home():
-    return('''<html><head><title>photos</title></head>
-        <body><p>welcome to a photo gallery consisting of fodd,pets and outer space</p></body>
-        <a href="/food">go to the first food photo</a>
-        </html> ''')
-@app.route('/food')
-def food():
-    return("<html><img href='data:image/jpeg;base64,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'alt='food'width='400'></html>")
-    
+    return '''
+        <html>
+        <head><title>Photos</title></head>
+        <body>
+            <p>Welcome to a photo gallery consisting of food, pets, and outer space</p>
+            <a href="/food1">Go to the first food photo</a>
+            <br>
+            <a href="/pet1">Go to the first pet photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/food1')
+def food1():
+    return '''
+        <html>
+        <head><title>Food Photo 1</title></head>
+        <body>
+            <img src="https://promova.com/content/italian_food_words_26076fb3f5.png" alt="Food Photo 1" width="400">
+            <br>
+            <a href="/food2">Go to the next food photo</a>
+            <br>
+            <a href="/home">Go back to home</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/food2')
+def food2():
+    return '''
+        <html>
+        <head><title>Food Photo 2</title></head>
+        <body>
+            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505" alt="Food Photo 2" width="400">
+            <br>
+            <a href="/food3">Go to the next food photo</a>
+            <br>
+            <a href="/food1">Go back to the first food photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/food3')
+def food3():
+    return '''
+        <html>
+        <head><title>Food Photo 3</title></head>
+        <body>
+            <img src="https://www.eatingwell.com/thmb/m5xUzIOmhWSoXZnY-oZcO9SdArQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/article_291139_the-top-10-healthiest-foods-for-kids_-02-4b745e57928c4786a61b47d8ba920058.jpg" alt="Food Photo 3" width="400">
+            <br>
+            <a href="/food2">Go back to the second food photo</a>
+            <br>
+            <a href="/home">Go back to home</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/pet1')
+def pet1():
+    return '''
+        <html>
+        <head><title>Pet Photo 1</title></head>
+        <body>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmOOBSFn1Y9Z101MXACWdA8QABuaKbG-cew&s" alt="Pet Photo 1" width="400">
+            <br>
+            <a href="/pet2">Go to the next pet photo</a>
+            <br>
+            <a href="/home">Go back to home</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/pet2')
+def pet2():
+    return '''
+        <html>
+        <head><title>Pet Photo 2</title></head>
+        <body>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf56o1QNYsv-rZfMuSNIOJahgzaIqlPT1iKbHbyNYww5-zTPwyMLXjjHhhbqzQyoeUCdo&usqp=CAU" alt="Pet Photo 2" width="400">
+            <br>
+            <a href="/pet3">Go to the next pet photo</a>
+            <br>
+            <a href="/pet1">Go back to the first pet photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/pet3')
+def pet3():
+    return '''
+        <html>
+        <head><title>Pet Photo 3</title></head>
+        <body>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRq8_Jukp3K7b28_qvLhqBg6pSZDdWjjeWSaC4Orpl2FAvityBBjjBVN47YmPteQ7c4Os&usqp=CAU" alt="Pet Photo 3" width="400">
+            <br>
+            <a href="/pet2">Go back to the second pet photo</a>
+            <br>
+            <a href="/home">Go back to home</a>
+        </body>
+        </html>
+    '''
+
 if __name__ == '__main__':
     app.run(debug=True)
+
