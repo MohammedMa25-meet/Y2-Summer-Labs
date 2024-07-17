@@ -7,6 +7,16 @@
 </head>
 <body>
     <h1>Welcome to the Home Page</h1>
-    <p><a href="/fortune">Get your Fortune</a></p>
+    <form action="/home" method="post">
+        <label for="birth_month">Enter your birth month:</label>
+        <input type="text" id="birth_month" name="birth_month" required>
+        <br><br>
+        <button type="submit">Tell my fortune</button>
+    </form>
 </body>
 </html>
+
+
+
+
+
