@@ -22,6 +22,8 @@ def home():
             <a href="/food1">Go to the first food photo</a>
             <br>
             <a href="/pet1">Go to the first pet photo</a>
+            <br>
+            <a href="/space1">Go to the first space photo</a>
         </body>
         </html>
     '''
@@ -79,9 +81,11 @@ def pet1():
         <body>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmOOBSFn1Y9Z101MXACWdA8QABuaKbG-cew&s" alt="Pet Photo 1" width="400">
             <br>
-            <a href="/pet2">Go to the next pet photo</a>
+            <a href="/pet2">Go to the 2nd pet photo</a>
             <br>
             <a href="/home">Go back to home</a>
+            <br>
+            <a href="/pet3">Go to 3rd photo</a>
         </body>
         </html>
     '''
@@ -93,8 +97,6 @@ def pet2():
         <head><title>Pet Photo 2</title></head>
         <body>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf56o1QNYsv-rZfMuSNIOJahgzaIqlPT1iKbHbyNYww5-zTPwyMLXjjHhhbqzQyoeUCdo&usqp=CAU" alt="Pet Photo 2" width="400">
-            <br>
-            <a href="/pet3">Go to the next pet photo</a>
             <br>
             <a href="/pet1">Go back to the first pet photo</a>
         </body>
@@ -109,13 +111,58 @@ def pet3():
         <body>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRq8_Jukp3K7b28_qvLhqBg6pSZDdWjjeWSaC4Orpl2FAvityBBjjBVN47YmPteQ7c4Os&usqp=CAU" alt="Pet Photo 3" width="400">
             <br>
-            <a href="/pet2">Go back to the second pet photo</a>
-            <br>
-            <a href="/home">Go back to home</a>
+            <a href="/pet1">Go back to the first pet photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/space1')
+def space1():
+    return '''
+        <html>
+        <head><title>Space Photo 1</title></head>
+        <body>
+        <img src="https://img.freepik.com/free-photo/3d-render-solar-system-background-with-colourful-nebula_1048-12990.jpg?size=626&ext=jpg" alt="Space Photo 1" width="400">  
+        <br>
+        <a href="/home">Go back to home</a>
+        <br>
+        <a href="/space2">Go  to second photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/space2')
+def space2():
+    return '''
+        <html>
+        <head><title>Space Photo 2</title></head>
+        <body>
+        <img src="https://img.freepik.com/free-vector/space-background-with-galaxy-meteorites_1308-69139.jpg?size=626&ext=jpg" alt="Space Photo 2" width="400">  
+        <br>
+        <a href="/space1">Go back to the first photo</a>
+        <br>
+        <a href="/space3">Go to the third photo</a>
+        </body>
+        </html>
+    '''
+
+@app.route('/space3')
+def space3():
+    return '''
+        <html>
+        <head><title>Space Photo 3</title></head>
+        <body>
+        <img src="https://img.freepik.com/free-vector/aesthetic-galaxy-element-vector-black-background_53876-118592.jpg?t=st=1721249738~exp=1721253338~hmac=dd04a7e8c255734606ededfff9f2b6488ea58894f6dc4dec1be7f211955ff8e0&w=826" alt="Space Photo 3" width="400">  
+        <br>
+        <a href="/space1">Go back to the first photo</a>
+        <br>
+        <a href="/space2">Go back to the second photo</a>
         </body>
         </html>
     '''
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
