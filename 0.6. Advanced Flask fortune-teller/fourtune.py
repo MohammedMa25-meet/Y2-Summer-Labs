@@ -14,8 +14,6 @@ def home():
 def fortune(birth_month):
     num_letters = len(birth_month)
     fortune_list = ["money", "intelligence", "good sleep", "relaxed", "gold", "silver", "diamond", "sapphire", "bronze", "iron"]
-    
-    # Calculate index within the range of fortune_list
     if num_letters > len(fortune_list):
         fortune_index = num_letters % len(fortune_list)
     else:
