@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('signup') }}">
+        <h4>Create an account</h4>
+        <p>Please fill up your information below to sign up.</p>
+        <label>Email address*</label>
+        <input type="email" name="email" id="emailStr" required>
+        <label>Password*</label>
+        <input type="password" name="password" minlength="6" required>
+        <label>Name*</label>
+        <input type="text" name="name" required>
+        <label>Favorite Movie*</label>
+        <input type="text" name="fav_movie" required>
+        <label>Favorite Song*</label>
+        <input type="text" name="fav_song" required>
+        <input type="submit" value="Sign Up"/>
+    </form>
+    <br>
+    <a href="{{ url_for('signin') }}"><button>Sign In</button></a>
+</body>
+</html>
