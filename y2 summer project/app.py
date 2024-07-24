@@ -7,6 +7,10 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'super-secret-key'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
+# Ensure the upload directory exists
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
 firebaseConfig = {
     "apiKey": "AIzaSyCXXjV-WGS82-H2HC3zlJEs2TbkI3NjBNc",
     "authDomain": "movie-review-web.firebaseapp.com",
@@ -74,7 +78,8 @@ def review():
 
         if file:
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
             db.child("reviews").push({
                 "user_id": user_id,
                 "user_name": name,
@@ -88,6 +93,11 @@ def review():
 def movies():
     reviews = db.child("reviews").get().val()
     return render_template('movies.html', reviews=reviews)
+
+@app.route('/logout')
+def logout():
+    login_session.pop('user', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
