@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Reviews</title>
 </head>
-hello here you can see other users reviews
 <body>
-
+    <h1>Movie Reviews</h1>
+    {% if reviews %}
+        {% for key, review in reviews.items() %}
+            <div>
+                <h2>{{ review.user_name }}</h2>
+                <img src="{{ review.poster_url }}" alt="Movie Poster" style="max-width:200px;">
+                <p>{{ review.review_text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
 </body>
 </html>

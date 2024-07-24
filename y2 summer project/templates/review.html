@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post a Review</title>
 </head>
 <body>
-please post a photo url from google  for your movie poster and review it by yor own words  
+    <h1>Post a Review</h1>
+    <form action="/review" method="POST" enctype="multipart/form-data">
+        <label for="poster">Movie Poster:</label>
+        <input type="file" name="poster" required>
+        <br>
+        <label for="review">Review:</label>
+        <textarea name="review" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
