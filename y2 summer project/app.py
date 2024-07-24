@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'super-secret-key'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-# Ensure the upload directory exists
+
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
@@ -41,9 +41,8 @@ def signup():
             login_session['user'] = user
             db.child("users").child(user['localId']).set({"name": name, "email": email})
             return redirect(url_for('home'))
-        except Exception as e:
-            print(e)
-            return render_template('signup.html', error="Failed signup, try again.")
+        except:
+            return render_template('signup.html')
     else:
         return render_template('signup.html')
 
@@ -56,9 +55,8 @@ def login():
             user = auth.sign_in_with_email_and_password(email, password)
             login_session['user'] = user
             return redirect(url_for('home'))
-        except Exception as e:
-            print(e)
-            return render_template('login.html', error="Failed login, try again.")
+        except:
+            return render_template('login.html')
     else:
         return render_template('login.html')
 

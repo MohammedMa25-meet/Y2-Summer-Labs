@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     Welcome to instaFlask! Please fill in the information below or, if you are already a user, click sign in.
@@ -20,6 +22,6 @@
         <input type="submit" value="Create Account">
     </form>
     <a href="/login">Already have an account? Login here</a>
-    {{error}}
+    
 </body>
 </html>
