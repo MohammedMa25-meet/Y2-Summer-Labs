@@ -86,52 +86,11 @@ def review():
             })
             return redirect(url_for('movies'))
     return render_template('review.html')
-@app.route('/delete/<review_id>', methods=['POST'])
-def delete(review_id):
-    try:
-        user_id = login_session['user']['localId']
-        review = db.child("reviews").child(review_id).get().val()
-
-        if review and review['user_id'] == user_id:
-            db.child("reviews").child(review_id).remove()
-            return redirect(url_for('movies'))
-        else:
-            return "You do not have permission to delete this review", 403
-    except:
-        return "An error occurred", 500
 
 @app.route('/movies')
 def movies():
     reviews = db.child("reviews").get().val()
-    comments = db.child("comments").get().val()
-    user_id = login_session['user']['localId'] if 'user' in login_session else None
-    
-    if reviews is None:
-        reviews = {}
-    if comments is None:
-        comments = {}
-    
-    return render_template('movies.html', reviews=reviews, comments=comments, user_id=user_id)
-
-@app.route('/comment/<review_id>', methods=['POST'])
-def comment(review_id):
-    if 'user' not in login_session:
-        return redirect(url_for('login'))
-    
-    user_id = login_session['user']['localId']
-    user_info = db.child("users").child(user_id).get().val()
-    name = user_info['name']
-    comment_text = request.form['comment']
-
-    db.child("comments").push({
-        "review_id": review_id,
-        "user_id": user_id,
-        "user_name": name,
-        "comment_text": comment_text
-    })
-
-    return redirect(url_for('movies'))
-
+    return render_template('movies.html', reviews=reviews)
 
 @app.route('/logout')
 def logout():

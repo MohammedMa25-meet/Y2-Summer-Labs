@@ -3,20 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Post a post</title>
+    <title>Post a Review</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
-    <h1>Post a post</h1>
-    <form action="/review" method="POST" enctype="multipart/form-data">
-        <label for="poster">post's photo</label>
-        <input type="file" name="poster" required>
-        <br>
-        <label for="review">post discribtion :</label>
-        <textarea name="review" required></textarea>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    <header>
+        <h1>Post a Review</h1>
+    </header>
+    <div class="container">
+        <form action="/review" method="POST" enctype="multipart/form-data">
+            <label for="poster">Post's Photo</label>
+            <input type="file" name="poster" required>
+            <br>
+            <label for="review">Post Description:</label>
+            <textarea name="review" required></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
+

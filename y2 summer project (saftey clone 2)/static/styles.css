@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -13,7 +13,7 @@ h1 {
     color: #333;
 }
 
-/* Header */
+
 header {
     background-color: #333;
     color: white;
@@ -28,7 +28,7 @@ header a {
     margin: 0 1em;
 }
 
-/* Container */
+
 .container {
     background-color: white;
     padding: 2em;
@@ -37,7 +37,6 @@ header a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Forms */
 form {
     display: flex;
     flex-direction: column;
@@ -71,7 +70,6 @@ input[type="submit"]:hover {
     background-color: #555;
 }
 
-/* Posts */
 .post {
     border-bottom: 1px solid #ccc;
     padding: 1em 0;
@@ -90,56 +88,11 @@ input[type="submit"]:hover {
     color: #666;
 }
 
-/* Comments */
-.comments {
-    margin-top: 1em;
-}
-
-.comments h3 {
-    margin-bottom: 0.5em;
-}
-
-.comments p {
-    margin: 0.5em 0;
-    color: #666;
-}
-
-.comments form {
-    margin-top: 1em;
-}
-
-.comments textarea {
-    margin-top: 0.5em;
-}
-
-.comments button {
-    margin-top: 0.5em;
-}
-
-/* Buttons */
-.button {
-    display: inline-block;
-    padding: 0.75em 1.5em;
-    margin: 0.5em 0;
-    background-color: #333;
-    color: white;
+a {
+    color: #333;
     text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
 }
 
-.button:hover {
-    background-color: #555;
+a:hover {
+    text-decoration: underline;
 }
-
-form .button {
-    padding: 0.5em 1em;
-    background-color: #f44336; /* Red color for delete button */
-    border: none;
-}
-
-form .button:hover {
-    background-color: #d32f2f;
-}
-

@@ -3,24 +3,50 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>instaFlask</title>
+    <title>InstaFlask</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
-    <h1>posts</h1>
-    <a href="{{ url_for('logout') }}">Sign Out</a>
-    {% if reviews %}
-        {% for key, review in reviews.items() %}
-            <div>
-                <h2>{{ review.user_name }}</h2>
-                <img src="{{ review.poster_url }}" alt="Movie Poster" style="max-width:200px;">
-                <p>{{ review.review_text }}</p>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No posts yet.</p>
-    {% endif %}
+    <header>
+        <h1>Posts</h1>
+        <a href="{{ url_for('logout') }}" class="button">Sign Out</a>
+    </header>
+    <div class="container">
+        {% if reviews %}
+            {% for key, review in reviews.items() %}
+                <div class="post">
+                    <h2>{{ review.user_name }}</h2>
+                    <img src="{{ review.poster_url }}" alt="Movie Poster">
+                    <p>{{ review.review_text }}</p>
+                    {% if review.user_id == user_id %}
+                        <form action="{{ url_for('delete', review_id=key) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="button">Delete</button>
+                        </form>
+                    {% endif %}
+                    
+                    <!-- Comments Section -->
+                    <div class="comments">
+                        <h3>Comments:</h3>
+                        {% for comment_key, comment in comments.items() %}
+                            {% if comment.review_id == key %}
+                                <p><strong>{{ comment.user_name }}:</strong> {{ comment.comment_text }}</p>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        <!-- Comment Form -->
+                        <form action="{{ url_for('comment', review_id=key) }}" method="POST">
+                            <textarea name="comment" required placeholder="Add a comment"></textarea>
+                            <button type="submit" class="button">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts yet.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
+
+
 

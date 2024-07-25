@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>instaFlask</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>posts</h1>
+    <a href="{{ url_for('logout') }}">Sign Out</a>
+    {% if reviews %}
+        {% for key, review in reviews.items() %}
+            <div>
+                <h2>{{ review.user_name }}</h2>
+                <img src="{{ review.poster_url }}" alt="Movie Poster" style="max-width:200px;">
+                <p>{{ review.review_text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet.</p>
+    {% endif %}
+</body>
+</html>
+

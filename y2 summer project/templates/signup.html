@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Signup</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
-    Welcome to instaFlask! Please fill in the information below or, if you are already a user, click sign in.
-    <form action="/signup" method="POST">
-        <input type="text" name="email" required>
-        <label>Email</label>
-        <br>
-        <input type="password" name="password" required>
-        <label>Password</label>
-        <br>
-        <input type="text" name="name" required>
-        <label>Name</label>
-        <br>
-        <input type="submit" value="Create Account">
-    </form>
-    <a href="/login">Already have an account? Login here</a>
-    
+    <header>
+        <h1>Signup</h1>
+    </header>
+    <div class="container">
+        <p>Welcome to InstaFlask! Please fill in the information below or, if you are already a user, click sign in.</p>
+        <form action="/signup" method="POST">
+            <label for="email">Email</label>
+            <input type="text" name="email" required>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <br>
+            <label for="name">Name</label>
+            <input type="text" name="name" required>
+            <br>
+            <input type="submit" value="Create Account">
+        </form>
+        <a href="/login" class="button">Already have an account? Login here</a>
+        {{error}}
+    </div>
 </body>
 </html>
+

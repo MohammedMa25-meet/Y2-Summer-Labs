@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Post a post</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Post a post</h1>
+    <form action="/review" method="POST" enctype="multipart/form-data">
+        <label for="poster">post's photo</label>
+        <input type="file" name="poster" required>
+        <br>
+        <label for="review">post discribtion :</label>
+        <textarea name="review" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
