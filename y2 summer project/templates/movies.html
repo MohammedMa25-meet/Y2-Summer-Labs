@@ -23,8 +23,6 @@
                             <button type="submit" class="button">Delete</button>
                         </form>
                     {% endif %}
-                    
-                    <!-- Comments Section -->
                     <div class="comments">
                         <h3>Comments:</h3>
                         {% for comment_key, comment in comments.items() %}
@@ -32,8 +30,6 @@
                                 <p><strong>{{ comment.user_name }}:</strong> {{ comment.comment_text }}</p>
                             {% endif %}
                         {% endfor %}
-                        
-                        <!-- Comment Form -->
                         <form action="{{ url_for('comment', review_id=key) }}" method="POST">
                             <textarea name="comment" required placeholder="Add a comment"></textarea>
                             <button type="submit" class="button">Comment</button>
